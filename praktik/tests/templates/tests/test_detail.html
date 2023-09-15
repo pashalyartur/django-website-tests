@@ -1,0 +1,139 @@
+{% extends 'core/base.html'%}
+
+{%block title%}detail{%endblock%}
+
+{% block content %}
+<head>
+	<title>Мой одностраничный сайт</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style type="text/css">
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+button {
+    background-color: rgb(206, 201, 201);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+
+}
+
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+a:hover {
+    color: #555;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 45px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+ 
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 50px;
+    max-width: 100%; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    max-width: 100%; 
+}
+
+
+.content {
+    max-width: 800px;
+    margin: 20px auto 0;
+    padding: 20px; 
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+
+  </style>
+</head>
+
+
+<body>
+
+  <h1>{{ test.title }}</h1>
+  <p>{{ test.description }}</p>
+  <form action="{% url 'submit_test' test.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="student_name" placeholder="Enter your name" required style="
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+"></br>
+
+    {% for question in test.question_set.all %}
+      <h3>{{ question.question_text }}</h3>
+
+      {% for answer in question.answer_set.all %}
+        <input type="checkbox" name="question_{{ question.id }}" value="{{ answer.answer_text }}">
+        {{ answer.answer_text }}<br>
+      {% endfor %}
+
+      <br>
+    {% endfor %}
+    
+    <button>
+        <a class="button">Завершить тестирование
+        </a>
+    </button>
+  </form>
+</body>
+{%endblock%}
+
+

@@ -1,0 +1,145 @@
+{% extends 'core/base.html' %}
+
+{% block title %}role{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выберите вашу роль</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Выберите вашу роль</h1>
+        <div class="role-buttons">
+            <a href="/student/" class="role-button student-button">Студент</a>
+            <a href="{% url 'teacher' %}" class="role-button teacher-button">Преподаватель</a>
+        </div>
+    </div>
+</body>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.role-buttons {
+    margin-top: 20px;
+}
+
+.role-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.student-button {
+    background-color: #17a19a; /* Цвет для кнопки "Студент" */
+}
+
+.teacher-button {
+    background-color: #17a19a; /* Цвет для кнопки "Преподаватель" */
+}
+
+
+
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #555;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 45px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+ 
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 50px;
+    max-width: 100%; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    max-width: 100%; 
+}
+
+
+
+
+
+.content {
+    max-width: 800px;
+    margin: 20px auto 0;
+    padding: 20px; 
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+</style>
+
+</html>
+{%endblock  %}

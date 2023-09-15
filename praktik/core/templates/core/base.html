@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+
+        <nav>
+            <ul>
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'about' %}"><i class="fas fa-info-circle"></i></a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i></a></li>
+                    <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a></li>
+                {% else %}
+                    <li><a href="/"><i class="fas fa-home"></i></a></li>    
+                    <li><a href="{% url 'about' %}"><i class="fas fa-info-circle"></i></a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+</body>
+</html>
